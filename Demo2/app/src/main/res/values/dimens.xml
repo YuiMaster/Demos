@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_activity_margin">15dp</dimen>
+    <dimen name="default_title_bar_height">48dp</dimen>
+    <dimen name="title_bar_title_text_size">16sp</dimen>
+</resources>

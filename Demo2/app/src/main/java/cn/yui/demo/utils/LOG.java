@@ -6,11 +6,9 @@ import cn.yui.demo.BuildConfig;
 
 
 /**
- * @author liaoyuhuan
- * @name ${PROJECT_NAME}
- * @class
- * @time 2018/4/11  11:00
- * @description
+ * @Description: java类作用描述
+ * @Author: Yui Master
+ * @CreateDate: 2022/1/16 4:48 下午
  */
 public class LOG {
     static final String TAG = "hd/";

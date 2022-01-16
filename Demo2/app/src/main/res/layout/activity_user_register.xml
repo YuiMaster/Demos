@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- title bar -->
+        <ImageView
+            android:id="@+id/title_bar_guide_start"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/default_title_bar_height"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/title_bar_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/title_bar_guide_start"
+            app:layout_constraintStart_toEndOf="@id/title_bar_guide_start"
+            app:layout_constraintTop_toTopOf="@id/title_bar_guide_start" />
+
+
+        <TextView
+            android:id="@+id/title_Bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_bar_title_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/title_bar_guide_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_bar_guide_start" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

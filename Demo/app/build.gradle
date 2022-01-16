@@ -4,16 +4,21 @@ apply plugin: 'kotlin-kapt'
 //apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "cn.yui.demo"
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+//            }
+//        }
     }
 
     compileOptions {
@@ -21,8 +26,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    buildFeatures {
-        dataBinding true
+    dataBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -34,17 +39,17 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.2.0'
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
 
     /** 测试类 */
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     /** Kotlin */
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     /** Kotlin扩展库 */
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
@@ -58,10 +63,10 @@ dependencies {
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     /** glide */
-    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+//    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
     /** Room */
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+//    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
@@ -75,6 +80,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
     /** hilt依赖库 */
-    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
-    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+//    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
+//    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
+//    annotationProcessor "androidx.hilt:hilt-compiler:$rootProject.hiltVersion"
+//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
 }

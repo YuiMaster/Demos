@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentMap
 import javax.inject.Inject
 
 /**
- * @Description: java类作用描述
+ * @Description: 全局数据发送总线
  * @Author: Yui Master
  * @CreateDate: 2022/1/16 12:40 下午
  */

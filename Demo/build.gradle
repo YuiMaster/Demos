@@ -40,7 +40,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         /** 查看hilt等插件可用版本：
          * @see {https://mvnrepository.com/artifact/com.google.dagger/hilt-android-gradle-plugin} */
-//        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }
 

@@ -1,24 +1,52 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+
     ext {
+        // 项目配置
+        compileSdkVersion = 30
+        minSdkVersion = 21
+        targetSdkVersion = 30
+        // 语言配置
         gradleVersion = '4.1.2'
+        kotlinVersion = '1.4.30'
+
+        // UI配置
+        appCompatVersion = '1.1.0'
+        constraintLayoutVersion = '2.0.0-beta3'
+        fragmentVersion = '1.3.0'
+        glideVersion = '4.10.0'
+        materialVersion = '1.2.0'
+
+        // kotlin扩展配置
+        coroutinesVersion = "1.4.2"
+        ktxVersion = '1.0.2'
+
+        // hilt配置
+        hiltVersion = '2.31.2-alpha'
+        lifecycleVersion = '2.2.0'
+
+        // 网络请求
+        okhttpLoggingVersion = '4.7.2'
+        retrofitVersion = '2.9.0'
+        gsonVersion = '2.8.2'
+        roomVersion = '2.2.5'
     }
     repositories {
         google()
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        /** 查看hilt等插件可用版本：
+         * @see {https://mvnrepository.com/artifact/com.google.dagger/hilt-android-gradle-plugin} */
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }
 
 allprojects {
     repositories {
         google()
-        mavenCentral()
         jcenter()
     }
 }

@@ -1,4 +1,4 @@
-package cn.yui.demo2;
+package cn.yui.demo;
 
 import org.junit.Test;
 

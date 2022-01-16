@@ -1,4 +1,4 @@
-package cn.yui.demo2;
+package cn.yui.demo;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("cn.yui.demo2", appContext.getPackageName());
+        assertEquals("cn.yui.demo", appContext.getPackageName());
     }
 }

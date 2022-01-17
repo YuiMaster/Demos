@@ -5,14 +5,17 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
-import javax.inject.Inject
 
 /**
- * @Description: 全局数据发送总线(基于RxJava)
+ * @Description: 全局数据发送总线(基于RxJava)，
+ * 优点：可以指定线程切换
+ * 缺点：
+ * 方式1：第一个订阅取完数据时移除数据，导致其他订阅空指针异常
+ * 方式2：取完数据不移除数据，导致数据堆积
  * @Author: Yui Master
  * @CreateDate: 2022/1/16 12:40 下午
  */
-class DataDispatcher @Inject constructor() {
+class DataDispatcher {
     companion object {
         private const val TAG = "DataDispatcher"
     }

@@ -12,12 +12,14 @@ import javax.inject.Singleton
 @Module
 class AppSingleModule {
 
+    /** 全局数据分发：基于RxJava */
     @Singleton
     @Provides
     fun provideDataDispatcher(): DataDispatcher {
         return DataDispatcher()
     }
 
+    /** 全局数据分发 */
     @Singleton
     @Provides
     fun provideGlobalDispatcher(): GlobalDispatcher {

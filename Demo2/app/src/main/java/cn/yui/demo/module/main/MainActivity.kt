@@ -1,6 +1,7 @@
-package cn.yui.demo.module
+package cn.yui.demo.module.main
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import cn.yui.demo.R
 import cn.yui.demo.data.db.items.LoginInfoItem
 import cn.yui.demo.data.db.items.UserInfoItem
@@ -23,8 +24,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     lateinit var globalDispatcher: GlobalDispatcher
     private var subscribeUserInfo: ((UserInfoItem) -> Unit)? = null
     private var subscribeLoginInfoItem: ((LoginInfoItem) -> Unit)? = null
+
+    private val viewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dataBinding.viewModel = viewModel
         dataBinding.textView.text = "测试内容"
         dataBinding.textView.setOnClickListener {
             UserRegisterActivity.start(this)

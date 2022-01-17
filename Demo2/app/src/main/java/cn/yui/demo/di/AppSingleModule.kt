@@ -1,6 +1,7 @@
 package cn.yui.demo.di
 
-import cn.yui.demo.data.DataDispatcher
+import cn.yui.demo.utils.bus.DataDispatcher
+import cn.yui.demo.utils.bus.GlobalDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +16,11 @@ class AppSingleModule {
     @Provides
     fun provideDataDispatcher(): DataDispatcher {
         return DataDispatcher()
+    }
+
+    @Singleton
+    @Provides
+    fun provideGlobalDispatcher(): GlobalDispatcher {
+        return GlobalDispatcher()
     }
 }

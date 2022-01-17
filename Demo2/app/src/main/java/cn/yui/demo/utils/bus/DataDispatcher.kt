@@ -1,7 +1,6 @@
-package cn.yui.demo.data
+package cn.yui.demo.utils.bus
 
 import cn.yui.demo.utils.LOG
-import com.hudun.androidrecorder.data.usecase.RxData
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.ConcurrentHashMap
@@ -9,30 +8,32 @@ import java.util.concurrent.ConcurrentMap
 import javax.inject.Inject
 
 /**
- * @Description: 全局数据发送总线
+ * @Description: 全局数据发送总线(基于RxJava)
  * @Author: Yui Master
  * @CreateDate: 2022/1/16 12:40 下午
  */
 class DataDispatcher @Inject constructor() {
     companion object {
-        private const val TAG = "TransientDataProvider"
+        private const val TAG = "DataDispatcher"
     }
 
     /** 传输数据存储对象 */
-    private var mMap: ConcurrentMap<Class<*>, RxData> = ConcurrentHashMap()
+    private var mMap: ConcurrentMap<Class<*>, BusData> = ConcurrentHashMap()
 
     /** 一个Observable对象 */
     private val mPublishData: PublishSubject<Class<*>> = PublishSubject.create()
 
     /**
      * 存储useCase
-     * 使用save [rxData]是要存继承UseCase类的方法
+     * 使用save [busData]是要存继承UseCase类的方法
      * */
-    fun save(rxData: RxData) {
+    fun save(busData: BusData) {
         LOG.d(TAG, "save ")
-        val rxDataClass: Class<out RxData> = rxData.javaClass
-        mMap[rxDataClass] = rxData
-        mPublishData.onNext(rxDataClass)
+        val busDataClass: Class<BusData> = busData.javaClass
+        mMap[busDataClass] = busData
+        mPublishData.onNext(busDataClass)
+
+        mPublishData.subscribe()
     }
 
     /**
@@ -40,7 +41,7 @@ class DataDispatcher @Inject constructor() {
      * @param rxDataClass RxData 实现类
      * @return mMap 对应Key的value
      * */
-    fun <T : RxData> get(rxDataClass: Class<T>): T? {
+    fun <T : BusData> get(rxDataClass: Class<T>): T? {
         return mMap.remove(rxDataClass) as T?
     }
 
@@ -49,7 +50,7 @@ class DataDispatcher @Inject constructor() {
      * @param rxDataClass rxData 实现类
      * @return true：存在 false：不存在
      */
-    fun <T : RxData> isContain(rxDataClass: Class<T>): Boolean {
+    fun <T : BusData> isContain(rxDataClass: Class<T>): Boolean {
         return mMap.containsKey(rxDataClass)
     }
 
@@ -58,7 +59,7 @@ class DataDispatcher @Inject constructor() {
      * 接收 rxData，返回Observable对象
      * 如果传入的[rxDataClass]是继承RxData类那么从 mMap数据组中拿出并返回
      */
-    fun <T : RxData> observeRxData(rxDataClass: Class<T>): Observable<T> {
+    fun <T : BusData> observeRxData(rxDataClass: Class<T>): Observable<T> {
         return mPublishData.filter { clazz -> return@filter clazz == rxDataClass }
             .map { return@map mMap.remove(rxDataClass) }
             .cast(rxDataClass)
@@ -69,7 +70,7 @@ class DataDispatcher @Inject constructor() {
      * 接收RxData，返回Observable对象
      * 如果传入的[rxDataClass]是继承RxData类那么从 mMap 数据组中拿出并返回
      */
-    fun <T : RxData> observeRxDataUnRemove(rxDataClass: Class<T>): Observable<T> {
+    fun <T : BusData> observeRxDataUnRemove(rxDataClass: Class<T>): Observable<T> {
         return mPublishData.filter { clazz -> return@filter clazz == rxDataClass }
             .map {
                 LOG.d(TAG, "RxDataObservableUnRemove ")

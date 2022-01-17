@@ -1,4 +1,4 @@
-package com.hudun.androidrecorder.data.usecase
+package cn.yui.demo.utils.bus
 
 /**
  *
@@ -7,4 +7,4 @@ package com.hudun.androidrecorder.data.usecase
  * @Author: leimingbao
  * @Date: 11/25/20 11:28 AM
  **/
-interface RxData
+open class BusData

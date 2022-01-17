@@ -30,7 +30,6 @@
             app:layout_constraintStart_toEndOf="@id/title_bar_guide_start"
             app:layout_constraintTop_toTopOf="@id/title_bar_guide_start" />
 
-
         <TextView
             android:id="@+id/title_Bar_text"
             android:layout_width="wrap_content"

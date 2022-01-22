@@ -1,2 +1,3 @@
 rootProject.name = "LearnBinder"
 include ':app'
+include ':ipclib'

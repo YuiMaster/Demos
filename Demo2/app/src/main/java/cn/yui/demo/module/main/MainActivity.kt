@@ -1,6 +1,8 @@
 package cn.yui.demo.module.main
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import androidx.activity.viewModels
 import cn.yui.demo.R
 import cn.yui.demo.data.db.items.LoginInfoItem
@@ -29,6 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Handler().sendMessage(Message.obtain())
         dataBinding.viewModel = viewModel
         dataBinding.textView.text = "测试内容"
         dataBinding.textView.setOnClickListener {
